@@ -1,8 +1,20 @@
 module KongYiji
 
 using Configurations
+using MLStyle
 
-export Constraint, Positive, Negative, MultipleOf, SecretString, ValidationError, @option
+export ValidationError, @option,
+    Constraint,
+    Positive,
+    Negative,
+    MultipleOf,
+    SecretString,
+    LessThan,
+    LessEqual,
+    GreaterThan,
+    GreaterEqual,
+    Interval,
+    interval
 
 include("pirates.jl")
 include("types.jl")

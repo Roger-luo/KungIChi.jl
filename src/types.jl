@@ -39,7 +39,7 @@ for N in [8, 16, 32, 64, 128]
 end
 
 function Base.convert(::Type{Constraint{T, F}}, x) where {T, F}
-    F(x) || throw(ValidationError("validation failed: $x does not satisfy $F"))
+    F(x) || throw(ValidationError("$x does not satisfy $F"))
     return Constraint{T, F}(x)
 end
 
@@ -58,3 +58,65 @@ Base.length(s::SecretString) = length(s.content)
 # do not indicate the length
 Base.show(io::IO, ::SecretString) = print(io, "********")
 Base.print(io::IO, ::SecretString) = print(io, "********")
+
+
+struct LessThan{T}
+    x::T
+end
+
+struct LessEqual{T}
+    x::T
+end
+
+struct GreaterThan{T}
+    x::T
+end
+
+struct GreaterEqual{T}
+    x::T
+end
+
+(f::LessThan)(y) = y < f.x
+(f::LessEqual)(y) = y ≤ f.x
+(f::GreaterThan)(y) = y > f.x
+(f::GreaterEqual)(y) = y ≥ f.x
+
+struct Interval{L <: Union{GreaterThan, GreaterEqual}, U <: Union{LessThan, LessEqual}}
+    lower::L
+    upper::U
+end
+
+function interval(;gt=nothing, lt=nothing, ge=nothing, le=nothing)
+    @match (gt, lt, ge, le) begin
+        (nothing, nothing, nothing, nothing) => throw(ArgumentError("no boundary is specified"))
+        (gt, nothing, nothing, nothing) => GreaterThan(gt)
+        (nothing, lt, nothing, nothing) => LessThan(lt)
+        (nothing, nothing, ge, nothing) => GreaterEqual(ge)
+        (nothing, nothing, nothing, le) => LessEqual(le)
+
+        (gt, lt, nothing, nothing) => Interval(GreaterThan(gt), LessThan(lt))
+        (gt, nothing, nothing, le) => Interval(GreaterThan(gt), LessEqual(le))
+        (nothing, lt, ge, nothing) => Interval(GreaterEqual(ge), LessThan(lt))
+        (nothing, nothing, ge, le) => Interval(GreaterEqual(ge), LessEqual(le))
+
+        (gt, nothing, ge, nothing) => throw(ArgumentError("duplicated upperbound: gt=$gt, ge=$ge"))
+        (nothing, lt, nothing, le) => throw(ArgumentError("duplicated upperbound: lt=$lt, le=$le"))
+        _ => error("case not handled")
+    end
+end
+
+Base.show(io::IO, x::GreaterThan) = print(io, "(", x.x, ", ∞)")
+Base.show(io::IO, x::GreaterEqual) = print(io, "[", x.x, ", ∞)")
+Base.show(io::IO, x::LessThan) = print(io, "(-∞, ", x.x, ")")
+Base.show(io::IO, x::LessEqual) = print(io, "(-∞, ", x.x, "]")
+
+function Base.show(io::IO, x::Interval)
+    print_interval(io, x.lower)
+    print(io, ", ")
+    print_interval(io, x.upper)
+end
+
+print_interval(io::IO, x::GreaterEqual) = print(io, "[", x.x)
+print_interval(io::IO, x::GreaterThan) = print(io, "(", x.x)
+print_interval(io::IO, x::LessThan) = print(io, x.x, ")")
+print_interval(io::IO, x::LessEqual) = print(io, x.x, "]")
