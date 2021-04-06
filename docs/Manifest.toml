@@ -9,6 +9,17 @@ uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
 [[Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 
+[[Configurations]]
+deps = ["Crayons", "Expronicon", "OrderedCollections", "TOML"]
+git-tree-sha1 = "57d3907d8433ee57241cf1303b761521e76e26cd"
+uuid = "5218b696-f38b-4ac9-8b61-a12ec717816d"
+version = "0.14.2"
+
+[[Crayons]]
+git-tree-sha1 = "3f71217b538d7aaee0b69ab47d9b7724ca8afa0d"
+uuid = "a8cc5b0e-0ffa-5ad4-8c14-923d3ee1735f"
+version = "4.0.4"
+
 [[Dates]]
 deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -29,6 +40,12 @@ version = "0.26.3"
 deps = ["ArgTools", "LibCURL", "NetworkOptions"]
 uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 
+[[Expronicon]]
+deps = ["Crayons", "MLStyle", "Markdown", "OrderedCollections"]
+git-tree-sha1 = "c375ab57e09d64468bdeb3a8c4bece1f258166a9"
+uuid = "6b7a57c9-7cc1-4fdf-b7f5-e857abae3636"
+version = "0.5.2"
+
 [[IOCapture]]
 deps = ["Logging"]
 git-tree-sha1 = "377252859f740c217b936cebcd918a44f9b53b59"
@@ -46,6 +63,7 @@ uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.1"
 
 [[KongYiji]]
+deps = ["Configurations", "Expronicon", "MLStyle"]
 path = ".."
 uuid = "f52142bb-6843-4e16-a1b1-69f2acef56c5"
 version = "0.1.0"
@@ -72,6 +90,11 @@ uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 [[Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
 
+[[MLStyle]]
+git-tree-sha1 = "a667f58636b36ba10145d46a4afe70492850af8c"
+uuid = "d8e11817-5142-5d16-987a-aa16d5891078"
+version = "0.4.9"
+
 [[Markdown]]
 deps = ["Base64"]
 uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
@@ -88,6 +111,11 @@ uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 
 [[NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
+
+[[OrderedCollections]]
+git-tree-sha1 = "4fa2ba51070ec13fcc7517db714445b4ab986bdf"
+uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+version = "1.4.0"
 
 [[Parsers]]
 deps = ["Dates"]
