@@ -8,6 +8,7 @@ using JSON
 export ValidationError,
     @schema,
     @validate, @check,
+    multiple_of,
     Constraint,
     Positive,
     Negative,
@@ -44,6 +45,7 @@ export ValidationError,
 
 include("pirates.jl")
 include("types.jl")
+include("check.jl")
 include("schema.jl")
 include("json.jl")
 

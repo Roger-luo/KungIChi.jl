@@ -51,12 +51,12 @@ function Base.convert(::Type{Constraint{T, F}}, x) where {T, F}
     return Constraint{T, F}(x)
 end
 
-struct MultipleOf{T <: Integer}
+struct MultipleOf{T}
     n::T
 end
 
 Base.show(io::IO, f::MultipleOf) = print(io, "multiple_of(", f.n, ")")
-(f::MultipleOf)(x::Integer) = iszero(rem(x, f.n))
+(f::MultipleOf)(x::Integer) = multiple_of(x, f.n)
 
 struct SecretString <: AbstractString
     content::String
