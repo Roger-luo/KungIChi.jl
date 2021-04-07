@@ -1,4 +1,4 @@
-module KongYiji
+module KungIChi
 
 using Configurations
 using Expronicon

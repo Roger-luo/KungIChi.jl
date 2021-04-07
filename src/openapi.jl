@@ -1,7 +1,7 @@
 module OpenAPI
 
 using Configurations: Maybe
-using ..KongYiji: @schema
+using ..KungIChi: @schema
 
 # TODO:
 # implement customize lowering

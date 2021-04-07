@@ -1,16 +1,16 @@
-using KongYiji
+using KungIChi
 using Documenter
 
-DocMeta.setdocmeta!(KongYiji, :DocTestSetup, :(using KongYiji); recursive=true)
+DocMeta.setdocmeta!(KungIChi, :DocTestSetup, :(using KungIChi); recursive=true)
 
 makedocs(;
-    modules=[KongYiji],
+    modules=[KungIChi],
     authors="Roger-Luo <rogerluo.rl18@gmail.com> and contributors",
-    repo="https://github.com/Roger-luo/KongYiji.jl/blob/{commit}{path}#{line}",
-    sitename="KongYiji.jl",
+    repo="https://github.com/Roger-luo/KungIChi.jl/blob/{commit}{path}#{line}",
+    sitename="KungIChi.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://Roger-luo.github.io/KongYiji.jl",
+        canonical="https://Roger-luo.github.io/KungIChi.jl",
         assets=String[],
     ),
     pages=[
@@ -19,5 +19,5 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/Roger-luo/KongYiji.jl",
+    repo="github.com/Roger-luo/KungIChi.jl",
 )

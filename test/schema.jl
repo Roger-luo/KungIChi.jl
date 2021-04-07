@@ -1,4 +1,4 @@
-using KongYiji
+using KungIChi
 using Test
 
 function multiply_by_two(y)

@@ -1,12 +1,12 @@
 ```@meta
-CurrentModule = KongYiji
+CurrentModule = KungIChi
 ```
 
-# KongYiji
+# KungIChi
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [KongYiji]
+Modules = [KungIChi]
 ```

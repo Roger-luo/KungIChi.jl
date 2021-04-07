@@ -1,4 +1,4 @@
-using KongYiji
+using KungIChi
 using Test
 
 @testset "schema" begin
