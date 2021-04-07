@@ -8,7 +8,6 @@ using JSON
 export ValidationError,
     @schema,
     @validate, @check,
-    @option,
     Constraint,
     Positive,
     Negative,
@@ -20,9 +19,28 @@ export ValidationError,
     GreaterEqual,
     Interval,
     interval,
-    to_toml,
     to_json,
+    from_json,
+    # Configurations
+    @option,
+    to_toml,
+    no_default,
+    Maybe,
+    # reflection
+    field_aliases,
+    field_default,
+    field_alias,
+    type_alias,
+    # traits
+    is_option,
+    # parse
+    from_dict,
+    from_kwargs,
+    from_toml,
+    from_toml_if_exists,
+    # serialize
     to_dict
+
 
 include("pirates.jl")
 include("types.jl")
