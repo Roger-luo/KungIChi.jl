@@ -68,6 +68,28 @@ end
 @schema struct Operation
 end
 
+@schema struct Server
+    url::Maybe{String} = nothing
+    description::Maybe{String} = nothing
+    variables::Maybe{Dict{String, ServerVariable}} = nothing
+end
+
+@schema struct PathItem
+    ref::String
+    summary::Maybe{String} = nothing
+    description::Maybe{String} = nothing
+    get::Operation
+    put::Operation
+    post::Operation
+    delete::Operation
+    options::Operation
+    head::Operation
+    patch::Operation
+    trace::Operation
+    servers::Vector{Server}
+    parameters::Vector{Parameter}
+end
+
 @schema struct Components
     schemas::Maybe{Dict{String, Schema}} = nothing
     responses::Maybe{Dict{String, Response}} = nothing
@@ -78,12 +100,6 @@ end
     securitySchemes::Maybe{Dict{String, SecurityScheme}} = nothing
     links::Maybe{Dict{String, Link}} = nothing
     callbacks::Maybe{Dict{String, Callback}} = nothing
-end
-
-@schema struct Server
-    url::Maybe{String} = nothing
-    description::Maybe{String} = nothing
-    variables::Maybe{Dict{String, ServerVariable}} = nothing
 end
 
 @schema struct Security
@@ -102,27 +118,11 @@ end
     item::PathItem
 end
 
-@schema struct 
-    ref::String
-    summary::Maybe{String} = nothing
-    description::Maybe{String} = nothing
-    get::Operation
-    put::Operation
-    post::Operation
-    delete::Operation
-    options::Operation
-    head::Operation
-    patch::Operation
-    trace::Operation
-    servers::Vector{Server}
-    parameters::Vector{Parameter}
-end
-
 @schema struct OpenAPIObject
     openapi::VersionNumber
     info::Info
     servers::Vector{Server}
-    paths::Vector{Path}
+    paths::Vector{Paths}
     components::Components
     security::Security
     tags::Vector{Tag}
