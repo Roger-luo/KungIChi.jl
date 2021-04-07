@@ -3,6 +3,7 @@ module KongYiji
 using Configurations
 using Expronicon
 using MLStyle
+using JSON
 
 export ValidationError,
     @schema,
@@ -18,11 +19,14 @@ export ValidationError,
     GreaterThan,
     GreaterEqual,
     Interval,
-    interval
+    interval,
+    to_toml,
+    to_json,
+    to_dict
 
 include("pirates.jl")
 include("types.jl")
-
 include("schema.jl")
+include("json.jl")
 
 end

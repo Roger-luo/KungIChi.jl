@@ -27,7 +27,9 @@ end
     end
 end
 
-Foo(2, 2)
+d = Foo(2, 2) |> to_dict
+
+to_json(Foo(2, 2))
 Foo(-2, 2)
 
 funcs, validate_calls, checker_calls, msg = KongYiji.split_validate_fn(def)
