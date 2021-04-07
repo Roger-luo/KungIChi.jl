@@ -8,8 +8,9 @@
 *there are four different ways to write the 回 character, do you know all of them?*
 
 A Julia port of [pydantic](https://pydantic-docs.helpmanual.io/).
-Data validation and settings management ~using python type annotations~ just work in Julia. This package
-just provide you some convenient validation tools. It reexports the interface of [Configurations](https://Roger-luo.github.io/Configurations.jl), thus you don't have to depend on `Configurations` explicitly.
+Data validation and settings management ~using python type annotations~ just work in Julia with [Configurations](https://Roger-luo.github.io/Configurations.jl). Thus this package just provide you some convenient validation tools and some sugars for defining validations. 
+
+It reexports the interface of `Configurations`, thus you don't have to depend on `Configurations` explicitly. If you only need a lightweight setting/configuration/option definition use `Configurations`.
 
 ## Installation
 
