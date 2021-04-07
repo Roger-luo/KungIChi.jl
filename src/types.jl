@@ -1,5 +1,13 @@
 struct ValidationError <: Exception
-    msg::String
+    stmt::String
+    got::String
+end
+
+function Base.show(io::IO, err::ValidationError)
+    print(io, "ValidationError: got ")
+    printstyled(io, err.got; color=:light_green)
+    print(io, " failed to validate ")
+    printstyled(io, err.stmt; color=:light_cyan)
 end
 
 struct Constraint{T, F}

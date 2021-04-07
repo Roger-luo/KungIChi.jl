@@ -1,9 +1,13 @@
 module KongYiji
 
 using Configurations
+using Expronicon
 using MLStyle
 
-export ValidationError, @option,
+export ValidationError,
+    @schema,
+    @validate, @check,
+    @option,
     Constraint,
     Positive,
     Negative,
@@ -18,5 +22,7 @@ export ValidationError, @option,
 
 include("pirates.jl")
 include("types.jl")
+
+include("schema.jl")
 
 end
