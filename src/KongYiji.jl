@@ -22,6 +22,7 @@ export ValidationError,
     interval,
     to_json,
     from_json,
+    Maybe,
     # Configurations
     @option,
     to_toml,
@@ -48,5 +49,6 @@ include("types.jl")
 include("check.jl")
 include("schema.jl")
 include("json.jl")
+include("openapi.jl")
 
 end
